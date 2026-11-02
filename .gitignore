@@ -1,33 +1,40 @@
-# Python temporary files
-__pycache__/
-*.pyc
-
-# Virtual environments
-.venv/
-venv/
-
-# Local databases
-*.db
-*.sqlite
+# Private data: never commit these.
 *.sqlite3
-*.db-journal
-*.db-wal
-*.db-shm
-
-# API keys and secrets
+*.sqlite3-*
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.partial
+*.bak
+*.log
+*.zip
 .env
 .env.*
 !.env.example
-secrets.json
-*api_key*
-
-# Operating system files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
 .DS_Store
-Thumbs.db
+.AppleDouble/
+*.app/
+backups/
+Backups/
+exports/
+managed_server.json
+.python-path
+.install-marker.json
 
-# Editor settings
-.vscode/
-.idea/
-
-# Temporary files
-*.log
+# Additional publication safeguards
+*.csv
+*.tsv
+*.jsonl
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*.json
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
