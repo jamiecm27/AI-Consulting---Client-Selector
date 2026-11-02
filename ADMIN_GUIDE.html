@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client Selector · Administrator Guide</title><style>:root{color-scheme:light;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#213449;background:#eef2f6}*{box-sizing:border-box}body{margin:0}header{background:#17314e;color:white;padding:36px max(24px,calc((100vw - 1100px)/2));border-bottom:6px solid #59a59b}header p{margin:0;color:#d8e6f2;font-size:15px;letter-spacing:.04em}header h1{margin:10px 0;font-size:34px;line-height:1.2}header .sub{letter-spacing:0;font-size:16px}.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;max-width:1150px;margin:30px auto;padding:0 24px}nav{align-self:start;position:sticky;top:20px;background:white;padding:18px;border:1px solid #d7e0e9;border-radius:10px}nav h2{font-size:15px;margin:0 0 12px}nav a{display:block;font-size:13px;padding:7px 0;text-decoration:none;border-bottom:1px solid #edf0f3}article{background:white;padding:30px 34px;border:1px solid #d7e0e9;border-radius:10px;min-width:0}article>h1{display:none}h2{font-size:23px;color:#17314e;margin:34px 0 14px;border-top:1px solid #dce5ed;padding-top:24px;scroll-margin-top:20px}h3{font-size:18px;margin-top:24px}p,li{font-size:16px;line-height:1.65}li{padding:3px 0}a{color:#145d91}code{font-size:.88em;background:#edf2f7;border-radius:4px;padding:2px 5px;overflow-wrap:anywhere}pre{background:#edf2f7;padding:16px;border-radius:7px;overflow:auto}pre code{padding:0}table{border-collapse:collapse;width:100%;font-size:14px;margin:18px 0}th,td{text-align:left;vertical-align:top;padding:12px;border:1px solid #dbe4ec;line-height:1.5}th{background:#eaf1f7;color:#17314e}tr:nth-child(even){background:#f8fafc}blockquote{margin:18px 0;padding:5px 18px;border-left:4px solid #59a59b;background:#f0f7f5}footer{max-width:1150px;margin:20px auto 40px;padding:0 24px;color:#526578;font-size:13px}:focus-visible{outline:3px solid #a65a00;outline-offset:3px}@media(max-width:850px){.layout{grid-template-columns:1fr}nav{position:static}article{padding:20px}header h1{font-size:28px}table{display:block;overflow-x:auto}}@media print{@page{size:A4;margin:17mm}body{background:white}header{background:white;color:#17314e;padding:0 0 15px;border-bottom:3px solid #17314e}header p{color:#526578}.layout{display:block;padding:0;margin:0}nav{display:none}article{padding:0;border:0}h2,h3{break-after:avoid}tr,pre{break-inside:avoid}a{color:#17314e}footer{padding:0;margin:20px 0}p,li{font-size:10.5pt;line-height:1.5}table{font-size:9pt}h2{font-size:17pt}header h1{font-size:26pt}}</style></head><body><header><p>ST ANDREWS CONSULTING SOCIETY · LOCAL MAC EDITION</p><h1>Client Selector · Administrator Guide</h1><p class="sub">Operation, backups, recovery and GitHub updates · v2.1 / Mac edition 2</p></header><div class="layout"><nav aria-label="Contents"><h2>In this guide</h2><a href="#section-1">1. Know which copy you are using</a><a href="#section-2">2. Start, stop and check the service</a><a href="#section-3">3. Back up the database</a><a href="#section-4">4. Update an existing installation</a><a href="#section-5">5. Recover from a backup — rehearsal still required</a><a href="#section-6">6. Keep development separate from working records</a><a href="#section-7">7. Prepare the existing GitHub repository</a><a href="#section-8">8. Run the isolated developer check</a><a href="#section-9">9. Operational troubleshooting</a><a href="#section-10">10. Test status and known limitations</a><a href="#section-11">References</a></nav><article><h1>Client Selector — Administrator Guide</h1>
+<p><strong>For Jamie or the person managing the Mac mini · v2.1 / Mac edition 2</strong></p>
+<p>This guide covers operating the tested local application, protecting its records, updating its code and preparing changes for GitHub. It does not set up hosting or committee accounts. The source package accompanying this guide contains no database or saved application records.</p>
+<h2 id="section-1">1. Know which copy you are using</h2>
+<p>Three different locations have different jobs:</p>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Downloads / extracted ZIP</td>
+<td>The installation or update payload. Keep it separate from daily working data.</td>
+</tr>
+<tr>
+<td><code>~/Applications/JamieClientSelector</code></td>
+<td>Installed application code and its working SQLite database.</td>
+</tr>
+<tr>
+<td>A separate GitHub clone under your Development folder</td>
+<td>Source editing, version control and review. It is not the live installation.</td>
+</tr>
+</tbody></table>
+<p><code>~</code> means the home folder of the currently logged-in Mac user. If you install under two accounts, you can create two independent databases. Pick one authoritative running installation. Mac user accounts do not automatically share or synchronise their application data.</p>
+<p>The local address is <strong><a href="http://127.0.0.1:8510">http://127.0.0.1:8510</a></strong>. The port number is deliberately separate from other tools using 8501.</p>
+<h2 id="section-2">2. Start, stop and check the service</h2>
+<h3>Daily startup</h3>
+<p>Open <strong>Client Selector.app</strong> from <code>~/Applications</code> or the Dock. A repeated launch reuses the running service for that installation. If app creation was unavailable, use <strong>START Client Selector.command</strong> in the installed folder instead.</p>
+<p>Closing the browser leaves the service running. A saved bookmark opens the address but does not itself start the service.</p>
+<h3>System administration</h3>
+<p>Open <strong>Settings → Open system administration &amp; backups</strong>, or the administration shortcut at the top of the dashboard. Check application count, latest backup, backup count, data path, log path and startup status.</p>
+<p>Use <strong>Stop Client Selector</strong> for a deliberate shutdown. Use <strong>CHECK Client Selector Status.command</strong> from the installed folder if the website is unavailable. Do not stop all Python processes; other projects may use them.</p>
+<h3>Startup at sign-in</h3>
+<p><strong>Enable automatic startup</strong> creates a per-user startup entry. It starts the application after that Mac user signs in. It does not start the application before login, unlock FileVault, keep the Mac awake or complete remote access. This sign-in-startup behaviour has not yet been confirmed on the actual Mac in this acceptance sequence.</p>
+<h2 id="section-3">3. Back up the database</h2>
+<ol>
+<li>Open system administration.</li>
+<li>Click <strong>Create backup now</strong>.</li>
+<li>Wait for the verified-backup success message.</li>
+<li>Confirm the latest backup and count update.</li>
+<li>Keep a secure off-device copy of verified backups at an agreed interval and before major updates.</li>
+</ol>
+<p>A backup snapshot uses SQLite’s backup API, checks database integrity and expected tables, closes database handles and then finalises the file. If the safety backup fails, the managed launcher stops rather than continuing. The app also takes a backup before a new managed server start when a database already exists.</p>
+<p>Default backup location:</p>
+<p><code>~/Library/Application Support/JamieClientSelector/Backups</code></p>
+<p>To open it in Finder, choose <strong>Go → Go to Folder</strong>, paste the path and press Return. The administration page’s actual paths take precedence if a later installation has been configured differently.</p>
+<p>Suggested operating routine: back up before each committee session and before updates; keep a separate secure copy after important decisions. Do not store backups in a public repository. CSV exports omit parts of the database and cannot replace this process.</p>
+<h2 id="section-4">4. Update an existing installation</h2>
+<ol>
+<li>Create a verified backup and record its location.</li>
+<li>Keep a copy of the current release code for rollback.</li>
+<li>Download and extract the intended update outside the installed folder.</li>
+<li>Double-click <strong>00 INSTALL ON MAC.command</strong> in the extracted update.</li>
+<li>The installer stops the recognised existing installation, backs it up and replaces code while retaining its database.</li>
+<li>Reopen Client Selector and reload an old browser tab.</li>
+<li>Check original applications, scores, decisions and history before continuing work.</li>
+</ol>
+<p>The update can run without a database in its source payload when the destination already has its valid database. For a fresh installation, the installer needs a source database; the clean GitHub source package deliberately omits it. Use the existing private installation package for migration, or use the isolated demonstration method described in the source README.</p>
+<p>Edition 2 adds an <code>assessed</code> status to the existing applications table on startup after backup. Existing scores remain assessed. New unscored applications are excluded from numeric rankings. Repeating the migration was checked using a temporary database copy.</p>
+<h2 id="section-5">5. Recover from a backup — rehearsal still required</h2>
+<p><strong>Backup creation passed; restoration into the live Mac installation has not been tested.</strong> First rehearse on a separate copy with someone comfortable managing SQLite. A successful backup message is not proof of a successful recovery.</p>
+<p>Recovery sequence for the responsible administrator:</p>
+<ol>
+<li>Stop Client Selector. Confirm the managed service is stopped before touching database files. If another database program is open, close it too.</li>
+<li>Record the installed folder and chosen verified backup. Keep a safe copy of the current application folder and release code before changing anything.</li>
+<li>Preserve the current <code>jamie_data.sqlite3</code> and any matching <code>-wal</code>, <code>-shm</code> or <code>-journal</code> files together in a separate recovery folder. Do not mix old journal files with a restored database. If you cannot confirm the database is closed, pause and get help.</li>
+<li>Copy the chosen verified backup into the installed folder as exactly <code>jamie_data.sqlite3</code>. Retain the backup itself in its original backup location.</li>
+<li>Reopen the application and check expected counts, a known application, scores, decisions and history.</li>
+<li>Record the backup restored, time, checks and any work lost since that snapshot. A restore does not merge later records automatically.</li>
+</ol>
+<p>If the backup belongs to an older schema, matching release code may be needed. Do not assume old code can read a newer database. Keep the installed marker and launcher files intact; do not delete the installation to force a fresh database.</p>
+<h2 id="section-6">6. Keep development separate from working records</h2>
+<p>Use separate working copies for you and Jamie, and exchange code through GitHub. Keep the live installed database out of both Git working copies. Do not change the running application in place while a committee session is underway.</p>
+<p>The <strong>user</strong> and <strong>administrator</strong> labels in these manuals describe responsibilities. They are not enforced app permissions: this version has no invitation-only accounts, per-user roles or named-reviewer audit trail. A trusted person able to reach this app can use its settings and administration controls.</p>
+<p>A Mac account’s file permissions and a private connection are separate controls. Remote user access must be configured and tested independently. Do not change the server to listen on all interfaces or expose it publicly as a shortcut. Jamie’s remote Selector access remains unverified in this acceptance record.</p>
+<h2 id="section-7">7. Prepare the existing GitHub repository</h2>
+<p>Repository:</p>
+<p><a href="https://github.com/jamiecm27/AI-Consulting---Client-Selector">AI-Consulting---Client-Selector</a></p>
+<p>Use the accompanying <strong>Client_Selector_GitHub_Source.zip</strong>, not a migration ZIP or the live installed folder. Its top-level source files are intended for review in the existing repository; it contains no saved database. No upload, commit, push or merge has been performed for you.</p>
+<h3>Beginner route: GitHub Desktop</h3>
+<ol>
+<li>Install GitHub Desktop from its official site and sign into an account with write access to the repository. Never share GitHub passwords.</li>
+<li>Choose <strong>File → Clone Repository</strong>, select the repository above (or its URL), and choose a dedicated Development folder. Do not clone over the installed application.</li>
+<li>Fetch and pull the latest changes before starting. If GitHub Desktop reports local changes or a conflict, resolve those before copying the release files.</li>
+<li>Create a branch, for example <strong>mac-edition-2-docs</strong>.</li>
+<li>Extract the clean source ZIP. Copy the contents of its <strong>Client_Selector_GitHub_Source</strong> folder into the cloned repository root. Preserve the clone’s <code>.git</code> folder. Finder’s <strong>Command + Shift + .</strong> shows hidden files, including <code>.gitignore</code>.</li>
+<li>If the repository already has ignore rules, combine the supplied exclusions with its existing rules rather than removing useful exclusions.</li>
+<li>Review every changed file in GitHub Desktop. Confirm the payload is code/documentation only. Review any older Windows files separately; the package does not determine which legacy files should be deleted.</li>
+<li>Run the source’s isolated self-test as described below. Do not use the live database to test a branch.</li>
+<li>Enter a concise commit summary such as <strong>Document tested Mac workflow and administration</strong>, then commit to the branch.</li>
+<li>Click <strong>Publish branch</strong> or <strong>Push origin</strong>, as appropriate. Open a pull request for review before merging into the default branch.</li>
+<li>After review and merge, keep a release copy and record its version. A GitHub push does not update the installed Mac application; installation is a separate step.</li>
+</ol>
+<p>GitHub Desktop’s clone, branch, commit and push workflow is described in GitHub’s official documentation. See the references at the end.</p>
+<h3>What must stay out of GitHub</h3>
+<ul>
+<li>Databases: <code>.sqlite3</code>, <code>.sqlite</code>, <code>.db</code>, and matching journal/WAL files.</li>
+<li>Backups, exports, logs and temporary files.</li>
+<li>API keys, passwords, <code>.env</code> files and credential files.</li>
+<li>Runtime metadata such as <code>.python-path</code>, <code>.install-marker.json</code> and managed-server state.</li>
+<li>Downloaded migration ZIPs and compiled Mac app bundles.</li>
+</ul>
+<p>The supplied <code>.gitignore</code> helps with Git staging. It does not remove a file already tracked and does not protect manual uploads through the GitHub website. If private data is already in the repository, do not merely add an ignore rule: stop publishing and arrange appropriate removal, history review and credential rotation where needed.</p>
+<h2 id="section-8">8. Run the isolated developer check</h2>
+<p>From Terminal in the clean source folder, run:</p>
+<pre><code class="language-sh">python3 self_test.py
+</code></pre>
+<p>If you need to select the folder: type <code>cd </code> with a trailing space, drag that source folder from Finder into Terminal, press Return, then run the command above. Use standard Python 3.11 or newer; the original developer checks used Python 3.13.</p>
+<p>The test uses disposable synthetic data, a private temporary home folder and an available local port. It does not open the live database, call OpenAI or install Mac startup entries. Passing it does not replace actual Mac launcher, Safari, remote-connection or live-AI tests.</p>
+<h2 id="section-9">9. Operational troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Could not verify installer</td>
+<td>For the expected downloaded installer, use macOS Privacy &amp; Security → Open Anyway after reviewing the specific file. A malware/damage warning needs separate investigation. Do not disable Mac security globally.</td>
+</tr>
+<tr>
+<td>Python missing</td>
+<td>Follow the installer’s official Python link and certificate instructions. Do not install unrelated frameworks.</td>
+</tr>
+<tr>
+<td>Safety backup failed</td>
+<td>Stop. Check the reported path, disk space and permissions. Preserve the working database; do not bypass the backup check.</td>
+</tr>
+<tr>
+<td>Port 8510 occupied</td>
+<td>Determine which app owns it. The launcher refuses to stop an unrelated listener.</td>
+</tr>
+<tr>
+<td>Wrong or missing records</td>
+<td>Check the active Mac account and the administration page’s database path. Avoid creating another installation as a fix.</td>
+</tr>
+<tr>
+<td>AI error</td>
+<td>Check authorised key, model access, billing and certificate/network errors. Manual selection remains available. Do not include keys in screenshots or logs shared for help.</td>
+</tr>
+<tr>
+<td>Cannot connect after sign-out/restart</td>
+<td>Application startup and private networking each need checking. A local app restart test is not a machine-reboot or remote-access test.</td>
+</tr>
+</tbody></table>
+<p>Server log default:</p>
+<p><code>~/Library/Application Support/JamieClientSelector/server.log</code></p>
+<p>A service log may include error details. Review it before sharing. The app does not provide an automatic monitoring or update service.</p>
+<h2 id="section-10">10. Test status and known limitations</h2>
+<p>Owner-reported Mac checks passed: application creation without scores; skip-AI/manual scoring; ranked output; decision save/history; persistence after refresh; both CSV exports; verified backup creation; stop/reopen persistence; unscored-state restrictions; cancel/discard unsaved-work behaviour; rejection of 101% weights; and correct valid-weight recalculation with original settings restored. These are guided user confirmations, not independent observation or a security audit.</p>
+<p>Still outstanding: live AI call and quality; restoring a backup; remote Selector access; sign-in/reboot startup; extended keyboard, zoom and assistive-technology checks. Original records from the owner’s Mac have not been copied back into this source package.</p>
+<p>Additional limits: no app-level user accounts, separate reviewer scoring, named decision authors, selection-round management, application-detail editing/deletion, score-change history or full history CSV export. Test Bakery/Test Pending may remain in the owner’s working database; the current UI cannot delete them. Agree a safe clean-up approach before real selection sessions rather than editing SQLite by hand during use.</p>
+<h2 id="section-11">References</h2>
+<ul>
+<li><a href="https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop">GitHub Desktop: cloning repositories</a></li>
+<li><a href="https://docs.github.com/en/desktop/overview/getting-started-with-github-desktop">GitHub Desktop: getting started</a></li>
+<li><a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop">GitHub Desktop: branches</a></li>
+<li><a href="https://www.python.org/downloads/macos/">Python macOS downloads</a></li>
+<li><a href="https://support.apple.com/guide/mac-help/open-an-app-by-overriding-security-settings-mh40617/mac">Apple: opening a downloaded app</a></li>
+</ul>
+</article></div><footer>Based on the saved application code and owner-reported Mac checks. Open in Safari; use File → Print to print or save as PDF.</footer></body></html>

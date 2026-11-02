@@ -1,0 +1,138 @@
+{
+  "release": "Client Selector v2.1 / Mac edition 2 \u2014 documentation completion",
+  "contents": "Code and documentation only; no saved database or records",
+  "runtime_unchanged_from_tested_edition_2": true,
+  "github_pushed": false,
+  "files": [
+    {
+      "name": ".gitignore",
+      "size_bytes": 445,
+      "sha256": "2235f996fd5cdb564e28824c1f2803f820ce2de16915c4002f706da261353054"
+    },
+    {
+      "name": "00 INSTALL ON MAC.command",
+      "size_bytes": 285,
+      "sha256": "e227468013d4f75fb868d6d08c2ed40192ab3bee8e709663d782734b32366692"
+    },
+    {
+      "name": "ACCEPTANCE_RECORD.md",
+      "size_bytes": 2242,
+      "sha256": "a483de3b64ee9588fa25445d412acc6212b3346cce322fd40ce4597c1e5b008e"
+    },
+    {
+      "name": "ADMIN_GUIDE.html",
+      "size_bytes": 19765,
+      "sha256": "b65afd0a44219de2aca81914e60e57923d95e8c57bac617536eef0ff3606c906"
+    },
+    {
+      "name": "ADMIN_GUIDE.md",
+      "size_bytes": 14207,
+      "sha256": "ef3683f8c52afe86a5b91931984e85706b0411a3878486ff070145eea8c5c58e"
+    },
+    {
+      "name": "BACK UP Client Selector.command",
+      "size_bytes": 284,
+      "sha256": "a3640da0c7beccc8b1e263ee0d9ec18b0dcb9c8882bc6b5ab609fec4a6735b47"
+    },
+    {
+      "name": "CHANGELOG.md",
+      "size_bytes": 1133,
+      "sha256": "5620960dd29adc78480852812848153578107d409648ee53b30182ad421a37b4"
+    },
+    {
+      "name": "CHECK Client Selector Status.command",
+      "size_bytes": 284,
+      "sha256": "4943829ce63c7a069d3a7c2267503c0ee98753db08bcb441f2f62c1020bf6751"
+    },
+    {
+      "name": "DESIGN.md",
+      "size_bytes": 3058,
+      "sha256": "b91fc6c240a8aae0d95200f4b951dc2bc2522c3390221575dfc0da9290527a97"
+    },
+    {
+      "name": "DEVELOPMENT_INSTRUCTIONS.md",
+      "size_bytes": 7067,
+      "sha256": "8f0aa32e810fd1065ce6bed5d429b3e2171f2cc8e4dfa675b9d3cc84ea3be6dc"
+    },
+    {
+      "name": "PROJECT_BRIEF.md",
+      "size_bytes": 1756,
+      "sha256": "7d5923abf9af964b2ccae00f14044d7d3d59692c2afcfd44af56c29d0ad2e50d"
+    },
+    {
+      "name": "README.md",
+      "size_bytes": 4486,
+      "sha256": "a1742ee337ac3a865e22f3567567853a7597b019c4e47548b2a215cea09faf62"
+    },
+    {
+      "name": "START Client Selector.command",
+      "size_bytes": 283,
+      "sha256": "775ff5467d6cd91ac6d7331835a9a444f77ebf62976ab834eddcc4c77ba7d58a"
+    },
+    {
+      "name": "START HERE.html",
+      "size_bytes": 969,
+      "sha256": "c24816a7017f89ff72a6928060b2bace10edd957ebd96aeddb2d1e82f241f077"
+    },
+    {
+      "name": "STOP Client Selector.command",
+      "size_bytes": 282,
+      "sha256": "98483c95aea60de6ee7c5ab80eca607eb25aa2c780561d7cb3cf41d7a1e4a082"
+    },
+    {
+      "name": "TASKS.md",
+      "size_bytes": 1769,
+      "sha256": "3f8757215e501f38b2a0cd310c23c376924bb5c09ddab46989253025c94bb594"
+    },
+    {
+      "name": "TEST_REPORT.md",
+      "size_bytes": 2719,
+      "sha256": "210bce2fdfb491b091175e4f117b083e4fc40b34d952062e4c37dd3082c6f6d5"
+    },
+    {
+      "name": "USER_GUIDE.html",
+      "size_bytes": 13226,
+      "sha256": "5553ee813c52e4f347e7767e7e4de48ebfc194132074bc9bd8dc0e67e3508248"
+    },
+    {
+      "name": "USER_GUIDE.md",
+      "size_bytes": 7931,
+      "sha256": "84e9d25eef04813d258c8a52f28762d51666146b4d36c8127ac1d2196fe38648"
+    },
+    {
+      "name": "_mac_run.sh",
+      "size_bytes": 2068,
+      "sha256": "814d4763a77e73187d0c22ad0cb1a6e4f08424ced4030f7732a27e6462bf8e6f"
+    },
+    {
+      "name": "admin_console.html",
+      "size_bytes": 6454,
+      "sha256": "15f58c8406cb1d547442960d62a9ecc838c7985d4b142975b478ded63c18a1db"
+    },
+    {
+      "name": "app.py",
+      "size_bytes": 12730,
+      "sha256": "7db092860d6b1e5f2f94bb850b1bb96e23201367f6707c909561c002fa674a9b"
+    },
+    {
+      "name": "client_selector_manager.py",
+      "size_bytes": 18674,
+      "sha256": "6e58d08d502b36c1036043642dd1936193a1eef55d52d450d3461d65ab04ec52"
+    },
+    {
+      "name": "index.html",
+      "size_bytes": 21580,
+      "sha256": "887bd9910b75af97e36ddb02e2230c696370f87d4a77a29f385d1521da6a6119"
+    },
+    {
+      "name": "install_mac.py",
+      "size_bytes": 8867,
+      "sha256": "77b122ca209557e89ef5c49e7fefcdd0066e410cd8e83f2d74659de36ddcf90c"
+    },
+    {
+      "name": "self_test.py",
+      "size_bytes": 6509,
+      "sha256": "628b5c8a87311e0130d4c6b1708e13091b2df3bc2a58e9de8b59a9423c3cd0d2"
+    }
+  ]
+}
